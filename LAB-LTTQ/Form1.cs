@@ -55,16 +55,16 @@ namespace LAB_LTTQ
 
             List<string> lists = new List<string>();              // Tạo danh sách đáp án từng câu.
 
-            lists.Add("one");                                     // Đáp án câu 1, nằm ở vị trí [0].
-            lists.Add("on");                                      // Đáp án câu 2, nằm ở vị trí [1].
-            lists.Add("left");                                    // Đáp án câu 3, nằm ở vị trí [2].
-            lists.Add("then");                                    // Đáp án câu 4, nằm ở vị trí [3].
-            lists.Add("as");                                      // Đáp án câu 5, nằm ở vị trí [4].
-            lists.Add("married");                                 // Đáp án câu 6, nằm ở vị trí [5].
-            lists.Add("the");                                     // Đáp án câu 7, nằm ở vị trí [6].
-            lists.Add("but");                                     // Đáp án câu 8, nằm ở vị trí [7].
-            lists.Add("that");                                    // Đáp án câu 9, nằm ở vị trí [8].
-            lists.Add("watches");                                 // Đáp án câu 10, nằm ở vị trí [9].
+            lists.Add("one");
+            lists.Add("on");
+            lists.Add("left");
+            lists.Add("then");
+            lists.Add("as");
+            lists.Add("married");
+            lists.Add("the");
+            lists.Add("but");
+            lists.Add("that");
+            lists.Add("watches");
 
             bt.Dapantungcau = lists;                              // Lưu danh sách đáp án vào bài tập.
 
