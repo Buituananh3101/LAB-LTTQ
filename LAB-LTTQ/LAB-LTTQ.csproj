@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F622F8BA-6902-40BF-88E4-CEF6DCDF346E}</ProjectGuid>
+    <ProjectGuid>{5EE6BD0C-B3BC-7FC8-0619-CDE3F5A2D646}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>LAB_LTTQ</RootNamespace>
     <AssemblyName>LAB-LTTQ</AssemblyName>
