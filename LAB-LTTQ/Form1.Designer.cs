@@ -105,18 +105,18 @@
             this.rtbLoiBaiHat.Location = new System.Drawing.Point(284, 23);
             this.rtbLoiBaiHat.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.rtbLoiBaiHat.Name = "rtbLoiBaiHat";
-            this.rtbLoiBaiHat.Size = new System.Drawing.Size(238, 426);
+            this.rtbLoiBaiHat.Size = new System.Drawing.Size(217, 426);
             this.rtbLoiBaiHat.TabIndex = 4;
             this.rtbLoiBaiHat.Text = "";
             // 
             // axWindowsMediaPlayer1
             // 
             this.axWindowsMediaPlayer1.Enabled = true;
-            this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(15, 276);
-            this.axWindowsMediaPlayer1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(15, 278);
+            this.axWindowsMediaPlayer1.Margin = new System.Windows.Forms.Padding(2);
             this.axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
             this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
-            this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(258, 169);
+            this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(258, 167);
             this.axWindowsMediaPlayer1.TabIndex = 0;
             // 
             // Form1
