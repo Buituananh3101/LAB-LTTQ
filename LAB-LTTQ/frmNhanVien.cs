@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace LAB_LTTQ
 {
-    public partial class mnNhanVien : Form
+    public partial class frmNhanVien : Form
     {
-        public mnNhanVien()
+        public frmNhanVien()
         {
             InitializeComponent();
         }

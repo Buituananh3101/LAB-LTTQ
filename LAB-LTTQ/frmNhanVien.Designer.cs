@@ -1,6 +1,6 @@
 ﻿namespace LAB_LTTQ
 {
-    partial class mnNhanVien
+    partial class frmNhanVien
     {
         /// <summary>
         /// Required designer variable.
@@ -243,7 +243,7 @@
             // 
             // btnThemMoi
             // 
-            this.btnThemMoi.Location = new System.Drawing.Point(822, 356);
+            this.btnThemMoi.Location = new System.Drawing.Point(822, 366);
             this.btnThemMoi.Name = "btnThemMoi";
             this.btnThemMoi.Size = new System.Drawing.Size(96, 40);
             this.btnThemMoi.TabIndex = 1;
@@ -252,7 +252,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(822, 410);
+            this.btnSua.Location = new System.Drawing.Point(822, 420);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(96, 40);
             this.btnSua.TabIndex = 1;
@@ -261,7 +261,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(822, 464);
+            this.btnXoa.Location = new System.Drawing.Point(822, 474);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(96, 40);
             this.btnXoa.TabIndex = 1;
@@ -270,7 +270,7 @@
             // 
             // btnThoat
             // 
-            this.btnThoat.Location = new System.Drawing.Point(822, 518);
+            this.btnThoat.Location = new System.Drawing.Point(822, 528);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(96, 40);
             this.btnThoat.TabIndex = 1;
@@ -288,7 +288,7 @@
             this.dgvNhanVien.Size = new System.Drawing.Size(751, 232);
             this.dgvNhanVien.TabIndex = 2;
             // 
-            // mnNhanVien
+            // frmNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -300,7 +300,7 @@
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.btnThemMoi);
-            this.Name = "mnNhanVien";
+            this.Name = "frmNhanVien";
             this.Text = "NhanVien";
             this.Load += new System.EventHandler(this.NhanVien_Load);
             this.groupBox1.ResumeLayout(false);

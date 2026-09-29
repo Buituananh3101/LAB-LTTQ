@@ -16,7 +16,11 @@ namespace LAB_LTTQ
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new frmNhanVien());
         }
     }
 }
+
+// Yêu cầu\
+
+// 1. Hiển thị dữ liệu
