@@ -54,6 +54,9 @@ namespace LAB_LTTQ
 
             // 7 Hiển thị dữ liệu lên DataGridView
             dgvNhanVien.DataSource = tblNhanVien;
+
+            //dgvNhanVien.Columns[0].HeaderText = "Mã NV";
+            //dgvNhanVien.AutoResizeColumn;
         }
     }
 }
