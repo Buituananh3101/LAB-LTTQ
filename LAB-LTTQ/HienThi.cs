@@ -47,11 +47,11 @@ namespace LAB_LTTQ
         // ------------------------------------------------------------------------------------------------------------------------------------------------------------------ : Khơi tạo 
         private void HienThi_Load(object sender, EventArgs e)
         {
-            dgvtSach.SelectionMode = DataGridViewSelectionMode.FullRowSelect;                   // Chọn full row + chỉ chọn 1 dòng
-            dgvtSach.MultiSelect = false;
+            dgvtSach.SelectionMode = DataGridViewSelectionMode.FullRowSelect;                   // Chọn full row 
+            dgvtSach.MultiSelect = false;                                                       // chỉ chọn 1 dòng
 
-            dgvtSach.ReadOnly = true;                                                           // Chỉ đọc dữ liệu + không cho phép thêm dòng mới
-            dgvtSach.AllowUserToAddRows = false;
+            dgvtSach.ReadOnly = true;                                                           // Chỉ đọc dữ liệu 
+            dgvtSach.AllowUserToAddRows = false;                                                // không cho phép thêm dòng mới
 
             HienThiDuLieu();                                                                    // 3 Hiển thị danh sách sách
         }
