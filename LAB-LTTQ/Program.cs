@@ -20,3 +20,5 @@ namespace LAB_LTTQ
         }
     }
 }
+
+// Để kêt nối csdl liệu cần làm theo 5 bước như trong Form HienThi.cs

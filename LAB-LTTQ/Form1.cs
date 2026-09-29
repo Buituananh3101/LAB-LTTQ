@@ -16,5 +16,12 @@ namespace LAB_LTTQ
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // Dùng form kia cho nó ko bị lỗi scale
+            HienThi hienThi = new HienThi();
+            hienThi.Show();
+        }
     }
 }
