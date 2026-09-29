@@ -20,3 +20,6 @@ namespace LAB_LTTQ
         }
     }
 }
+
+
+// Dự án mini: class tương tác csdl + nhập ảnh + 6 nút + tìm kiếm 
