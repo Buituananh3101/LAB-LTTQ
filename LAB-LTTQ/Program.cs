@@ -54,3 +54,5 @@ namespace LAB_LTTQ
 //    → chọn ổ đĩa thì lấy thư mục
 //    → chọn thư mục thì lấy file nhạc 
 //    → chọn bài hát thì phát và tìm file lời cùng tên. Ví dụ, đặt Baihat.mp3 và Baihat.txt trong cùng thư mục.
+
+// test đổi nhánh 
