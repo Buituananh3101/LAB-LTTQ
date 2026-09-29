@@ -25,27 +25,21 @@ namespace LAB_LTTQ
         // ------------------------------------------------------------------------------------------------------------------------------------------------------------------ : 7 steps tương tác dữ liệu cơ bản
         private void HienThiDuLieu()
         {
-            SqlConnection sqlConnection = new SqlConnection(strConnect);                        // 1 tạo kết nối csdl : mở SQL là nhìn thấy tên
-
-            if (sqlConnection.State != ConnectionState.Open)                                    // 2 mở kết nối csdl
+            // using tự đóng : kết nối + giải phóng tài nguyên khi kết thúc khối lệnh
+            using (SqlConnection sqlConnection = new SqlConnection(strConnect))                 // 1 Tạo kết nối csdl
             {
-                sqlConnection.Open();
+                sqlConnection.Open();                                                           // 2 Mở kết nối csdl
+
+                string strSQL = "SELECT * FROM tSach";                                          // 3 Tạo lệnh SQL lấy danh sách sách
+
+                using (SqlDataAdapter dataAdapter = new SqlDataAdapter(strSQL, sqlConnection))  // 4 Tạo bộ lấy dữ liệu
+                {
+                    DataTable tSach = new DataTable();                                          // 5 Tạo DataTable và đổ dữ liệu vào
+                    dataAdapter.Fill(tSach);
+
+                    dgvtSach.DataSource = tSach;                                                // 6 Hiển thị dữ liệu lên DataGridView
+                }
             }
-
-            string strSQL = "SELECT * FROM tSach";                                              // 3 tạo lệnh SQL
-
-            SqlDataAdapter dataAdapter = new SqlDataAdapter(strSQL, sqlConnection);             // 4 thực thi lệnh SQL
-
-            DataTable tSach = new DataTable();                                                  // 5 tạo DataTable để chứa dữ liệu
-            dataAdapter.Fill(tSach);
-
-            if (sqlConnection.State != ConnectionState.Closed)                                  // 6 Đóng kết nối csdl
-            {
-                sqlConnection.Close();
-            }
-            sqlConnection.Dispose();
-
-            dgvtSach.DataSource = tSach;                                                        // 7 Hiển thị dữ liệu lên DataGridView
         }
 
 
