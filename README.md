@@ -10,7 +10,7 @@ online4:
                button CRUD, CellClick --> AI'code
 
 online5:
-    project --> class tương tác csdl + nhập ảnh + 6 nút + tìm kiếm                    : chưa làm
+    project --> class tương tác csdl + nhập ảnh + 6 nút + tìm kiếm                                                    : chưa làm
     project-csdl: chưa code j
 
 class7:
