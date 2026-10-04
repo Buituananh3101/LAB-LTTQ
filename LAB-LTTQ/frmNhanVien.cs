@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LAB_LTTQ.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +14,8 @@ namespace LAB_LTTQ
 {
     public partial class frmNhanVien : Form
     {
+        //----------------------------------------------------------------------------------------------------
+        Classes.DataProcessing db = new Classes.DataProcessing();
         public frmNhanVien()
         {
             InitializeComponent();
@@ -23,40 +26,32 @@ namespace LAB_LTTQ
 
         }
 
+
+
+        //----------------------------------------------------------------------------------------------------: //1.
         private void NhanVien_Load(object sender, EventArgs e)
         {
-            // 1 tạo kết nối csdl : mở SQL là nhìn thấy tên
-            string strConnect = "Data Source=localhost\\SQLEXPRESS; Database=QuanLyBanHang; Integrated Security=true"; // Khai báo server name, database name, user name, password
-            SqlConnection sqlConnection = new SqlConnection(strConnect);
+            DataTable dt = db.ReadData("SELECT * FROM tblNhanVien"); // Đọc dữ liệu từ bảng
+            dgvNhanVien.DataSource = dt;                             // Hiển thị lên DataGridView
 
-            // 2 mở kết nối csdl
-            if (sqlConnection.State != ConnectionState.Open)
-            {
-                sqlConnection.Open();
-            }
-
-            // 3 tạo lệnh SQL
-            string strSQL = "SELECT * FROM tblNhanVien";
-
-            // 4 thực thi lệnh SQL
-            SqlDataAdapter dataAdapter = new SqlDataAdapter(strSQL, sqlConnection);
-
-            // 5 tạo DataTable để chứa dữ liệu
-            DataTable tblNhanVien = new DataTable();
-            dataAdapter.Fill(tblNhanVien);
-
-            // 6 Đóng kết nối csdl
-            if (sqlConnection.State != ConnectionState.Closed)
-            {
-                sqlConnection.Close();
-            }
-            sqlConnection.Dispose();
-
-            // 7 Hiển thị dữ liệu lên DataGridView
-            dgvNhanVien.DataSource = tblNhanVien;
-
-            //dgvNhanVien.Columns[0].HeaderText = "Mã NV";
-            //dgvNhanVien.AutoResizeColumn;
+            dgvNhanVien.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
+
+
+        //----------------------------------------------------------------------------------------------------: //2.
+        private void dgvNhanVien_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        //----------------------------------------------------------------------------------------------------
     }
 }
+
+
+//YÊU CẦU FORM NHÂN VIÊN
+//1.	Khi form bắt đầu xuất hiện thì danh sách nhân viên đã hiển thị hết tại datagridview
+//2.	Khi click vào 1 nhân viên trên lưới thì thông tin nhân viên đó được hiển thì tương ứng.
+//3.	Khi nhấn nút Ảnh, cho phép chọn ảnh của nhân viên trên máy tính
+//4.	Thực hiện các thao tác nút: Thêm, sửa, xóa, thoát để thêm, sửa, xóa thông tin nhân viên.

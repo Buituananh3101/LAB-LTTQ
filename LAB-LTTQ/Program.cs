@@ -21,6 +21,5 @@ namespace LAB_LTTQ
     }
 }
 
-// Yêu cầu\
+// Yeu cau:
 
-// 1. Hiển thị dữ liệu
