@@ -175,38 +175,37 @@ namespace LAB_LTTQ
 
             if (btnThem.Enabled == true)                                                        // Thực hiện thêm mới nếu nút Thêm bật
             {
-                if (txtMaSP.Text.Trim() == "")                                                  // Kiểm tra xem ô nhập MaSP có bị trống không
-                {
-                    errChiTiet.SetError(txtMaSP, "Bạn không để trống mã sản phẩm trường này!");
-                    return;
-                }
+                // Kiểm tra xem ô nhập MaSP có bị trống không
+                if (txtMaSP.Text.Trim() == ""){ errChiTiet.SetError(txtMaSP, "Bạn không để trống mã sản phẩm trường này!"); return; }
+                // Kiểm tra xem mã sản phẩm đã tồn tại chưa để tránh lỗi
                 else
                 {
-                    sql = "Select * From tblMatHang Where MaSP ='" + txtMaSP.Text + "'";        // Kiểm tra xem mã sản phẩm đã tồn tại chưa để tránh lỗi
+                    sql = "Select * From tblMatHang Where MaSP ='" + txtMaSP.Text + "'";        
                     DataTable dtSP = dtbase.ReadData(sql);
-                    if (dtSP.Rows.Count > 0)
-                    {
-                        errChiTiet.SetError(txtMaSP, "Mã sản phẩm trùng trong cơ sở dữ liệu");
-                        return;
-                    }
+                    if (dtSP.Rows.Count > 0){ errChiTiet.SetError(txtMaSP, "Mã sản phẩm trùng trong cơ sở dữ liệu"); return; }
                     errChiTiet.Clear();
                 }
 
-
-
-                sql = "INSERT INTO tblMatHang(MaSP, TenSP, NgaySX, NgayHH, DonVi, DonGia, GhiChu) VALUES("; // Tạo câu lệnh Insert vào CSDL (dùng N' để hỗ trợ tiếng Việt)
-                sql += "N'" + txtMaSP.Text + "',N'" + txtTenSP.Text + "','" + dtpNgaySX.Value.ToString("yyyy-MM-dd") + "','" +
-                       dtpNgayHH.Value.ToString("yyyy-MM-dd") + "',N'" + txtDonVi.Text + "',N'" + txtDonGia.Text + "',N'" + txtGhiChu.Text + "')";
+                // Tạo câu lệnh Insert vào CSDL (dùng N' để hỗ trợ tiếng Việt)
+                sql = "INSERT INTO tblMatHang(MaSP, TenSP, NgaySX, NgayHH, DonVi, DonGia, GhiChu) VALUES("; 
+                sql += "N'" + txtMaSP.Text  + "'," +
+                       "N'" + txtTenSP.Text + "'," +
+                       "'"  + dtpNgaySX.Value.ToString("yyyy-MM-dd") + "'," +
+                       "'"  + dtpNgayHH.Value.ToString("yyyy-MM-dd") + "'," +
+                       "N'" + txtDonVi.Text  + "'," +
+                       "N'" + txtDonGia.Text + "'," +
+                       "N'" + txtGhiChu.Text + 
+                       "')";
             }
 
             if (btnSua.Enabled == true)                                                         // Thực hiện cập nhật dữ liệu nếu nút Sửa bật
             {                                                                                   // Ko sửa MaSP
                 sql = "Update tblMatHang SET ";
-                sql += "TenSP = N'" + txtTenSP.Text + "',";
-                sql += "NgaySX = '" + dtpNgaySX.Value.ToString("yyyy-MM-dd") + "',";
-                sql += "NgayHH = '" + dtpNgayHH.Value.ToString("yyyy-MM-dd") + "',";
-                sql += "DonVi = N'" + txtDonVi.Text + "',";
-                sql += "DonGia = '" + txtDonGia.Text + "',";
+                sql += "TenSP  = N'" + txtTenSP.Text + "',";
+                sql += "NgaySX =  '" + dtpNgaySX.Value.ToString("yyyy-MM-dd") + "',";
+                sql += "NgayHH =  '" + dtpNgayHH.Value.ToString("yyyy-MM-dd") + "',";
+                sql += "DonVi  = N'" + txtDonVi.Text + "',";
+                sql += "DonGia =  '" + txtDonGia.Text + "',";
                 sql += "GhiChu = N'" + txtGhiChu.Text + "' ";
                 sql += "Where MaSP = N'" + txtMaSP.Text + "'";
             }
@@ -220,7 +219,7 @@ namespace LAB_LTTQ
 
             dtbase.ChangeData(sql);                                                             // Thực thi câu lệnh SQL xuống cơ sở dữ liệu
 
-            sql = "Select * from tblMatHang";                                                      // Cập nhật lại DataGridView
+            sql = "Select * from tblMatHang";                                                   // Cập nhật lại DataGridView
             dgvKetQua.DataSource = dtbase.ReadData(sql);
 
             HienChiTiet(false);                                                                 // Ẩn hiện các nút phù hợp chức năng
