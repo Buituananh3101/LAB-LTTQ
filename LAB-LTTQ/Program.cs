@@ -20,3 +20,19 @@ namespace LAB_LTTQ
         }
     }
 }
+
+//CREATE DATABASE BanHang;
+//GO
+
+//USE BanHang;
+//GO
+
+//CREATE TABLE tblMatHang (
+//    MaSP nchar(5) PRIMARY KEY,
+//    TenSP nvarchar(30),
+//    NgaySX Date,
+//    NgayHH Date,
+//    DonVi nvarchar(10),
+//    DonGia Float,
+//    GhiChu nvarchar(200)
+//);
