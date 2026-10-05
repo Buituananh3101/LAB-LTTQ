@@ -15,8 +15,9 @@ lab4:
                    Xóa       -->
                    Lưu       --> Kiểm tra từng field + chỉ lưu khi Thêm/Sửa/Xóa bật
                    Hủy       --> True Thêm + False chi tiết           + False Sửa Xóa
-          CSDL: table ở Program, data ở DataProcessing
+          CSDL: cách tạo table ở Program, data ở DataProcessing
           Lỗi gặp phải: Không khớp kiểu Date
+    main-cleancode: xóa commend linh tinh (X)
 
 online4:
     csdl: kết nối CSDL = event form load
