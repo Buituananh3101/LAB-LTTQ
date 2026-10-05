@@ -161,6 +161,8 @@ namespace LAB_LTTQ
         {
             string sql = "";                                                                    // Khởi tạo chuỗi câu lệnh SQL
                                                                                                 // Sử dụng control ErrorProvider để hiển thị lỗi
+            
+            //------------- 1. Kiểm tra fields
 
             if (txtTenSP.Text.Trim() == "")                                                     // Kiểm tra tên sản phẩm có bị để trống không
             {
@@ -212,6 +214,8 @@ namespace LAB_LTTQ
                 errChiTiet.Clear();
             }
 
+            //------------- 2. Thực hiện nút
+
             if (btnThem.Enabled == true)                                                        // Thực hiện thêm mới nếu nút Thêm bật
             {
                 if (txtMaSP.Text.Trim() == "")                                                  // Kiểm tra xem ô nhập MaSP có bị trống không
@@ -253,9 +257,11 @@ namespace LAB_LTTQ
                 sql = "Delete From tblMatHang Where MaSP =N'" + txtMaSP.Text + "'";
             }
 
+            //------------- 3. Tương tác dữ liệu
+
             dtbase.ChangeData(sql);                                                             // Thực thi câu lệnh SQL xuống cơ sở dữ liệu
 
-            sql = "Select * from tblMatHang";                                                   // Cập nhật lại DataGridView
+            sql = "Select * from tblMatHang";                                                      // Cập nhật lại DataGridView
             dgvKetQua.DataSource = dtbase.ReadData(sql);
 
             HienChiTiet(false);                                                                 // Ẩn hiện các nút phù hợp chức năng
