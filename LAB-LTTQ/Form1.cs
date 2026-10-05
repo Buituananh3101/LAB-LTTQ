@@ -16,5 +16,11 @@ namespace LAB_LTTQ
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            frmMatHang frm = new frmMatHang();
+            frm.Show();
+        }
     }
 }
