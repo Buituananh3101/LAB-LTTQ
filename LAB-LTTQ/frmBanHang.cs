@@ -164,11 +164,11 @@ namespace LAB_LTTQ
 
             //------------- 1. Kiểm tra fields
 
-            if (txtTenSP.Text.Trim() == "") { errChiTiet.SetError(txtTenSP, "Bạn không để trống tên sản phẩm!"); return; } else { errChiTiet.Clear(); }
-            if (dtpNgaySX.Value > DateTime.Now) { errChiTiet.SetError(dtpNgaySX, "Ngày sản xuất không hợp lệ!"); return; } else { errChiTiet.Clear(); }
-            if (dtpNgayHH.Value < dtpNgaySX.Value) { errChiTiet.SetError(dtpNgayHH, "Ngày hết hạn nhỏ hơn ngày sản xuất!"); return; } else { errChiTiet.Clear(); }
-            if (txtDonVi.Text.Trim() == "") { errChiTiet.SetError(txtDonVi, "Bạn không để trống đơn vị!"); return; } else { errChiTiet.Clear(); }
-            if (txtDonGia.Text.Trim() == "") { errChiTiet.SetError(txtDonGia, "Bạn không để trống đơn giá!"); return; } else { errChiTiet.Clear(); }
+            if (txtTenSP.Text.Trim() == "")         { errChiTiet.SetError(txtTenSP, "Bạn không để trống tên sản phẩm!"); return; }      else { errChiTiet.Clear(); }
+            if (dtpNgaySX.Value > DateTime.Now)     { errChiTiet.SetError(dtpNgaySX, "Ngày sản xuất không hợp lệ!"); return; }          else { errChiTiet.Clear(); }
+            if (dtpNgayHH.Value < dtpNgaySX.Value)  { errChiTiet.SetError(dtpNgayHH, "Ngày hết hạn nhỏ hơn ngày sản xuất!"); return; }  else { errChiTiet.Clear(); }
+            if (txtDonVi.Text.Trim() == "")         { errChiTiet.SetError(txtDonVi, "Bạn không để trống đơn vị!"); return; }            else { errChiTiet.Clear(); }
+            if (txtDonGia.Text.Trim() == "")        { errChiTiet.SetError(txtDonGia, "Bạn không để trống đơn giá!"); return; }          else { errChiTiet.Clear(); }
 
 
             //------------- 2. Thực hiện nút
