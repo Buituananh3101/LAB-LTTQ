@@ -235,17 +235,19 @@ namespace LAB_LTTQ
                     errChiTiet.Clear();
                 }
 
+
+
                 sql = "INSERT INTO tblMatHang(MaSP, TenSP, NgaySX, NgayHH, DonVi, DonGia, GhiChu) VALUES("; // Tạo câu lệnh Insert vào CSDL (dùng N' để hỗ trợ tiếng Việt)
-                sql += "N'" + txtMaSP.Text + "',N'" + txtTenSP.Text + "','" + dtpNgaySX.Value.Date + "','" +
-                       dtpNgayHH.Value.Date + "',N'" + txtDonVi.Text + "',N'" + txtDonGia.Text + "',N'" + txtGhiChu.Text + "')";
+                sql += "N'" + txtMaSP.Text + "',N'" + txtTenSP.Text + "','" + dtpNgaySX.Value.ToString("yyyy-MM-dd") + "','" +
+                       dtpNgayHH.Value.ToString("yyyy-MM-dd") + "',N'" + txtDonVi.Text + "',N'" + txtDonGia.Text + "',N'" + txtGhiChu.Text + "')";
             }
 
             if (btnSua.Enabled == true)                                                         // Thực hiện cập nhật dữ liệu nếu nút Sửa bật
-            {
+            {                                                                                   // Ko sửa MaSP
                 sql = "Update tblMatHang SET ";
                 sql += "TenSP = N'" + txtTenSP.Text + "',";
-                sql += "NgaySX = '" + dtpNgaySX.Value.Date + "',";
-                sql += "NgayHH = '" + dtpNgayHH.Value.Date + "',";
+                sql += "NgaySX = '" + dtpNgaySX.Value.ToString("yyyy-MM-dd") + "',";
+                sql += "NgayHH = '" + dtpNgayHH.Value.ToString("yyyy-MM-dd") + "',";
                 sql += "DonVi = N'" + txtDonVi.Text + "',";
                 sql += "DonGia = '" + txtDonGia.Text + "',";
                 sql += "GhiChu = N'" + txtGhiChu.Text + "' ";
