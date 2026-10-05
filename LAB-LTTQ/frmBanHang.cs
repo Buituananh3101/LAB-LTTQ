@@ -13,11 +13,8 @@ namespace LAB_LTTQ
 {
     public partial class frmMatHang : Form
     {
-        //----------------------------------------------------------------------------------------------------
         DataProcessing dtbase = new DataProcessing();
 
-
-        //----------------------------------------------------------------------------------------------------
         public frmMatHang()
         {
             InitializeComponent();
@@ -25,12 +22,9 @@ namespace LAB_LTTQ
 
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
-
         }
 
-
-        //----------------------------------------------------------------------------------------------------
-        private void HienChiTiet(bool hien)                                              //Phương thức ẩn hiện các control trong groupBox Chi tiết
+        private void HienChiTiet(bool hien)
         {
             txtMaSP.Enabled = hien;
             txtTenSP.Enabled = hien;
@@ -39,55 +33,44 @@ namespace LAB_LTTQ
             txtDonVi.Enabled = hien;
             txtDonGia.Enabled = hien;
             txtGhiChu.Enabled = hien;
-            //Ẩn hiện 2 nút Lưu và Hủy
             btnLuu.Enabled = hien;
             btnHuy.Enabled = hien;
         }
-        private void frmMatHang_Load(object sender, EventArgs e)                        //Sự kiện load_Form
+
+        private void frmMatHang_Load(object sender, EventArgs e)
         {
-            //Load dữ liệu lên DataGridView
             dgvKetQua.DataSource = dtbase.ReadData("Select * from tblMatHang");
-            //Ẩn nút Sửa,xóa 
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
-            //Ẩn groupBox chi tiết
             HienChiTiet(false);
-
         }
 
-
-
-        //----------------------------------------------------------------------------------------------------
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            lblTieuDe.Text = "TÌM KIẾM MẶT HÀNG";                                               // Cập nhật trên nhãn tiêu đề
-            btnSua.Enabled = false;                                                             // Cấm nút Sửa và Xóa
+            lblTieuDe.Text = "TÌM KIẾM MẶT HÀNG";
+            btnSua.Enabled = false;
             btnXoa.Enabled = false;
 
-            string sql = "SELECT * FROM tblMatHang where MaSP is not null ";                    // Viết câu lệnh SQL cho tìm kiếm 
+            string sql = "SELECT * FROM tblMatHang where MaSP is not null ";
 
-            if (txtTKMaSP.Text.Trim() != "")                                                    // Tìm theo MaSP khác rỗng
+            if (txtTKMaSP.Text.Trim() != "")
             {
                 sql += " and MaSP like '%" + txtTKMaSP.Text + "%'";
             }
 
-            if (txtTKTenSP.Text.Trim() != "")                                                   // Kiểm tra TenSP 
+            if (txtTKTenSP.Text.Trim() != "")
             {
                 sql += " AND TenSP like N'%" + txtTKTenSP.Text + "%'";
             }
 
-            dgvKetQua.DataSource = dtbase.ReadData(sql);                                        // Load dữ liệu tìm được lên dataGridView
+            dgvKetQua.DataSource = dtbase.ReadData(sql);
         }
 
-
-        //----------------------------------------------------------------------------------------------------
         private void dgvKetQua_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //Hien thi nut sua
             btnSua.Enabled = true;
             btnXoa.Enabled = true;
             btnThem.Enabled = false;
-            //Bắt lỗi khi người sử dụng kích linh tinh lên datagrid
             try
             {
                 txtMaSP.Text = dgvKetQua.CurrentRow.Cells[0].Value.ToString();
@@ -103,8 +86,6 @@ namespace LAB_LTTQ
             }
         }
 
-
-        //----------------------------------------------------------------------------------------------------
         private void XoaTrangChiTiet()
         {
             txtMaSP.Text = "";
@@ -115,135 +96,63 @@ namespace LAB_LTTQ
             txtDonGia.Text = "";
             txtGhiChu.Text = "";
         }
+
         private void btnThem_Click(object sender, EventArgs e)
         {
             lblTieuDe.Text = "THÊM MẶT HÀNG";
-            //Xoa trang GroupBox chi tiết sản phẩm
             XoaTrangChiTiet();
-            //Cam nut sua xoa
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
-            //Hiện GroupBox Chi tiết
             HienChiTiet(true);
         }
 
-
-        //----------------------------------------------------------------------------------------------------
         private void btnSua_Click(object sender, EventArgs e)
         {
-            //Cập nhật tiêu đề
             lblTieuDe.Text = "CẬP NHẬT MẶ HÀNG";
-            //Ẩn hai nút Thêm và Xóa
             btnThem.Enabled = false;
             btnXoa.Enabled = false;
-            //Hiện gropbox chi tiết
             HienChiTiet(true);
         }
 
-
-        //----------------------------------------------------------------------------------------------------
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            //Bật Message Box cảnh báo người sử dụng
             if (MessageBox.Show("Bạn có chắc chắn xóa mã mặt hàng " + txtMaSP.Text + " không ? Nếu có ấn nút Lưu, không thì ấn nút Hủy", "Xóa sản phẩm", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 lblTieuDe.Text = "XÓA MẶT HÀNG";
                 btnThem.Enabled = false;
                 btnSua.Enabled = false;
-                //Hiện gropbox chi tiết
                 HienChiTiet(true);
             }
         }
 
-
-        //----------------------------------------------------------------------------------------------------
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            string sql = "";                                                                    // Khởi tạo chuỗi câu lệnh SQL
-                                                                                                // Sử dụng control ErrorProvider để hiển thị lỗi
-            
-            //------------- 1. Kiểm tra fields
+            string sql = "";
 
-            if (txtTenSP.Text.Trim() == "")                                                     // Kiểm tra tên sản phẩm có bị để trống không
-            {
-                errChiTiet.SetError(txtTenSP, "Bạn không để trống tên sản phẩm!");
-                return;
-            }
-            else
-            {
-                errChiTiet.Clear();
-            }
+            if (txtTenSP.Text.Trim() == "")         { errChiTiet.SetError(txtTenSP, "Bạn không để trống tên sản phẩm!"); return; }      else { errChiTiet.Clear(); }
+            if (dtpNgaySX.Value > DateTime.Now)     { errChiTiet.SetError(dtpNgaySX, "Ngày sản xuất không hợp lệ!"); return; }          else { errChiTiet.Clear(); }
+            if (dtpNgayHH.Value < dtpNgaySX.Value)  { errChiTiet.SetError(dtpNgayHH, "Ngày hết hạn nhỏ hơn ngày sản xuất!"); return; }  else { errChiTiet.Clear(); }
+            if (txtDonVi.Text.Trim() == "")         { errChiTiet.SetError(txtDonVi, "Bạn không để trống đơn vị!"); return; }            else { errChiTiet.Clear(); }
+            if (txtDonGia.Text.Trim() == "")        { errChiTiet.SetError(txtDonGia, "Bạn không để trống đơn giá!"); return; }          else { errChiTiet.Clear(); }
 
-            if (dtpNgaySX.Value > DateTime.Now)                                                 // Kiểm tra ngày sản xuất lớn hơn ngày hiện tại
+            if (btnThem.Enabled == true)
             {
-                errChiTiet.SetError(dtpNgaySX, "Ngày sản xuất không hợp lệ!");
-                return;
-            }
-            else
-            {
-                errChiTiet.Clear();
-            }
-
-            if (dtpNgayHH.Value < dtpNgaySX.Value)                                              // Kiểm tra ngày hết hạn nhỏ hơn ngày sản xuất
-            {
-                errChiTiet.SetError(dtpNgayHH, "Ngày hết hạn nhỏ hơn ngày sản xuất!");
-                return;
-            }
-            else
-            {
-                errChiTiet.Clear();
-            }
-
-            if (txtDonVi.Text.Trim() == "")                                                     // Kiểm tra đơn vị xem có để trống không
-            {
-                errChiTiet.SetError(txtDonVi, "Bạn không để trống đơn vị!");
-                return;
-            }
-            else
-            {
-                errChiTiet.Clear();
-            }
-
-            if (txtDonGia.Text.Trim() == "")                                                    // Kiểm tra đơn giá xem có để trống không
-            {
-                errChiTiet.SetError(txtDonGia, "Bạn không để trống đơn giá!");
-                return;
-            }
-            else
-            {
-                errChiTiet.Clear();
-            }
-
-            //------------- 2. Thực hiện nút
-
-            if (btnThem.Enabled == true)                                                        // Thực hiện thêm mới nếu nút Thêm bật
-            {
-                if (txtMaSP.Text.Trim() == "")                                                  // Kiểm tra xem ô nhập MaSP có bị trống không
-                {
-                    errChiTiet.SetError(txtMaSP, "Bạn không để trống mã sản phẩm trường này!");
-                    return;
-                }
+                if (txtMaSP.Text.Trim() == "")      {errChiTiet.SetError(txtMaSP, "Bạn không để trống mã sản phẩm trường này!");return;}
                 else
                 {
-                    sql = "Select * From tblMatHang Where MaSP ='" + txtMaSP.Text + "'";        // Kiểm tra xem mã sản phẩm đã tồn tại chưa để tránh lỗi
+                    sql = "Select * From tblMatHang Where MaSP ='" + txtMaSP.Text + "'";
                     DataTable dtSP = dtbase.ReadData(sql);
-                    if (dtSP.Rows.Count > 0)
-                    {
-                        errChiTiet.SetError(txtMaSP, "Mã sản phẩm trùng trong cơ sở dữ liệu");
-                        return;
-                    }
+                    if (dtSP.Rows.Count > 0)        { errChiTiet.SetError(txtMaSP, "Mã sản phẩm trùng trong cơ sở dữ liệu"); return;}
                     errChiTiet.Clear();
                 }
 
-
-
-                sql = "INSERT INTO tblMatHang(MaSP, TenSP, NgaySX, NgayHH, DonVi, DonGia, GhiChu) VALUES("; // Tạo câu lệnh Insert vào CSDL (dùng N' để hỗ trợ tiếng Việt)
+                sql = "INSERT INTO tblMatHang(MaSP, TenSP, NgaySX, NgayHH, DonVi, DonGia, GhiChu) VALUES(";
                 sql += "N'" + txtMaSP.Text + "',N'" + txtTenSP.Text + "','" + dtpNgaySX.Value.ToString("yyyy-MM-dd") + "','" +
                        dtpNgayHH.Value.ToString("yyyy-MM-dd") + "',N'" + txtDonVi.Text + "',N'" + txtDonGia.Text + "',N'" + txtGhiChu.Text + "')";
             }
 
-            if (btnSua.Enabled == true)                                                         // Thực hiện cập nhật dữ liệu nếu nút Sửa bật
-            {                                                                                   // Ko sửa MaSP
+            if (btnSua.Enabled == true)
+            {
                 sql = "Update tblMatHang SET ";
                 sql += "TenSP = N'" + txtTenSP.Text + "',";
                 sql += "NgaySX = '" + dtpNgaySX.Value.ToString("yyyy-MM-dd") + "',";
@@ -254,39 +163,30 @@ namespace LAB_LTTQ
                 sql += "Where MaSP = N'" + txtMaSP.Text + "'";
             }
 
-            if (btnXoa.Enabled == true)                                                         // Thực hiện xóa dữ liệu nếu nút Xóa bật
+            if (btnXoa.Enabled == true)
             {
                 sql = "Delete From tblMatHang Where MaSP =N'" + txtMaSP.Text + "'";
             }
 
-            //------------- 3. Tương tác dữ liệu
+            dtbase.ChangeData(sql);
 
-            dtbase.ChangeData(sql);                                                             // Thực thi câu lệnh SQL xuống cơ sở dữ liệu
-
-            sql = "Select * from tblMatHang";                                                      // Cập nhật lại DataGridView
+            sql = "Select * from tblMatHang";
             dgvKetQua.DataSource = dtbase.ReadData(sql);
 
-            HienChiTiet(false);                                                                 // Ẩn hiện các nút phù hợp chức năng
+            HienChiTiet(false);
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
         }
 
-
-        //----------------------------------------------------------------------------------------------------
         private void btnHuy_Click(object sender, EventArgs e)
         {
-            //Thiết lập lại các nút như ban đầu
             btnXoa.Enabled = false;
             btnSua.Enabled = false;
             btnThem.Enabled = true;
-            //xoa trang chi tiết
             XoaTrangChiTiet();
-            //Cam nhap vào groupBox chi tiết
             HienChiTiet(false);
         }
 
-
-        //----------------------------------------------------------------------------------------------------
         private void btnThoat_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Bạn có muốn thoát không?", "TB", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) this.Close();
