@@ -273,6 +273,14 @@ namespace LAB_LTTQ.DanhMuc
         {
             lblTieuDe.Text = "KẾT QUẢ TÌM KIẾM";
 
+            string strSelect = $"select * from tblHang where Mahang is not null";
+
+            if(txtMaHang.Text.Trim() != ""){ strSelect += $" and Mahang like '%{txtMaHang.Text}%'"; }
+            if(txtTenHang.Text.Trim() != "") { strSelect += $" and Tenhang like N'%{txtTenHang.Text}%'"; }
+            //if(cboChatLieu.Text.Trim() != "") { strSelect += $" and Machatlieu = '{cboChatLieu.SelectedValue}'"; }
+
+            DataTable dtKQ = dtBase.DocBang(strSelect);
+            dgvHang.DataSource = dtKQ;
         }
 
 
