@@ -15,23 +15,24 @@ lab4:
                    Xóa       -->
                    Lưu       --> Kiểm tra từng field + chỉ lưu khi Thêm/Sửa/Xóa bật
                    Hủy       --> True Thêm + False chi tiết           + False Sửa Xóa
-          CSDL: cách tạo table ở Program, data ở DataProcessing
+          CSDL: cách tạo table ở Program, data ở DataProcessing                                                         <CSDL 4>
           Lỗi gặp phải: Không khớp kiểu Date
     main-cleancode: xóa commend linh tinh (X)
 
 online4:
-    csdl: kết nối CSDL = event form load
-    csdl-CRUD: kết nối CSDL = gọi hàm( cho code vào hàm rồi gọi), 
+    csdl: kết nối CSDL = event form load                                                                                <csdl 1>
+    csdl-CRUD: kết nối CSDL = gọi hàm( cho code vào hàm rồi gọi),                                                       <csdl 2>
                dgv( SelectionMode, MultiSelect, ReadOnly, AllowUserToAddRows)
                button CRUD, CellClick --> AI'code
 
 online5:
-    project --> class tương tác csdl + nhập ảnh + 6 nút + tìm kiếm                                                    : chưa làm
-    project-csdl: chưa code j
+    project-video1: kết nối csdl                                                                                        <csdl 5>
+                    class function
+    project-video2: 
 
 class7:
     main: tạo giao diện
-    main-classcsdl: class tương tác data( openConnect, closeConnect, ReadData, ChangeData)
+    main-classcsdl: class tương tác data( openConnect, closeConnect, ReadData, ChangeData)                              <csdl 3>
                     event form load: đọc data
     
     
