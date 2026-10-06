@@ -58,7 +58,7 @@ namespace LAB_LTTQ.Classes
 
 
         //----------------------------------------------------------------------------------------------------
-        public void ChangeData(string sql)               // Truyền vào query
+        public void CapNhatDuLieu(string sql)               // Truyền vào query
         {
             openConnect();
 
