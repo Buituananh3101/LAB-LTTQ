@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace LAB_LTTQ.Classes
 {
@@ -72,3 +73,8 @@ namespace LAB_LTTQ.Classes
 
         //----------------------------------------------------------------------------------------------------
     }
+
+    //https://lmsutceduvn-my.sharepoint.com/:v:/g/personal/huongnt_utc_edu_vn/EY1RhuzUaU9FiZZyNqrQOZIB_xEjFcr3jqFNlfyZGHNUQA // Video 1
+    //https://lmsutceduvn-my.sharepoint.com/:v:/g/personal/huongnt_utc_edu_vn/EXLk7Z9rmQBOjewy4RYD68kBWik7LOLb4pDF0oFME_rjSQ // Video 2
+    //https://lmsutceduvn-my.sharepoint.com/:v:/g/personal/huongnt_utc_edu_vn/ERQ4ELl9QcxKjHMb2BRvRTABg6vHk9wZcqYtSpkvFJXqSg // Video 3
+    //https://lmsutceduvn-my.sharepoint.com/:v:/g/personal/huongnt_utc_edu_vn/EYlZUwuzGVdChRz9WFTGV8IBYr2dCWkursv5_-H7YrNlkw // Video 4
