@@ -21,7 +21,7 @@ namespace LAB_LTTQ
         }
     }
 } 
-// base on: online5/project-video1
+// base on: online5/project-video2
 
 
 // Dự án mini: 

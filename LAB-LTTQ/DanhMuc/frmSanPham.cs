@@ -58,6 +58,25 @@ namespace LAB_LTTQ.DanhMuc
             btnXoa.Enabled = false;
             btnBoQua.Enabled = false;
         }
+
+        private void btnAnh_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dlgAnh = new OpenFileDialog();
+            dlgAnh.Filter = "Bitmap(*.bmp)|*.bmp|BitmapGif(*.gif)|*.gif|All files(*.*)|*.*";
+            dlgAnh.InitialDirectory = Application.StartupPath;
+            dlgAnh.FilterIndex = 3; // Quy định lọc mặc định là bộ lọc thứ 1
+            dlgAnh.Title = "Chọn ảnh để hiển thị";
+
+            if (dlgAnh.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                // Lấy tên, đường dẫn ảnh khi người dùng chọn trong hộp hội thoại OpenDialog.
+                // Sau đó gán cho thuộc tính Image của PictureBox
+                picAnh.Image = Image.FromFile(dlgAnh.FileName);
+
+                string[] str = dlgAnh.FileName.Split('\\'); // Cắt tên file ảnh để lưu vào CSDL
+                fileAnh = str[str.Length - 1].ToString();
+            }
+        }
     }
 
 }

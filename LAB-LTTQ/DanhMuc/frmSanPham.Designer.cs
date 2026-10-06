@@ -193,6 +193,7 @@
             this.btnAnh.TabIndex = 14;
             this.btnAnh.Text = "Ảnh";
             this.btnAnh.UseVisualStyleBackColor = true;
+            this.btnAnh.Click += new System.EventHandler(this.btnAnh_Click);
             // 
             // btnTim
             // 
