@@ -42,7 +42,7 @@ namespace LAB_LTTQ.Classes
 
 
         //----------------------------------------------------------------------------------------------------
-        public DataTable ReadData(string sqlSelect)
+        public DataTable DocBang(string sqlSelect)
         {
             openConnect();
 
