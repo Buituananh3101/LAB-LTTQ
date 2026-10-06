@@ -271,6 +271,7 @@
             this.btnThoat.TabIndex = 26;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.UseVisualStyleBackColor = true;
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // picAnh
             // 
