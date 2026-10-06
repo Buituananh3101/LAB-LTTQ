@@ -19,7 +19,8 @@ namespace LAB_LTTQ
             Application.Run(new Form1());
         }
     }
-}
+} 
+// base on: online5/project-video1
 
 
 // Dự án mini: 
