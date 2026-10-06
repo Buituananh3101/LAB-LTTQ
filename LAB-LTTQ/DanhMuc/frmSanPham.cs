@@ -109,7 +109,7 @@ namespace LAB_LTTQ.DanhMuc
 
             ResetValue();
         }
-        private void btnBoQua_Click(object sender, EventArgs e) // f S X L B, t T
+        private void btnBoQua_Click(object sender, EventArgs e) // f S X L B, t T.
         {
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
