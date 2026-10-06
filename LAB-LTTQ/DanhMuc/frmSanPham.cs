@@ -97,7 +97,7 @@ namespace LAB_LTTQ.DanhMuc
             txtMaHang.Focus();
         }
 
-
+        //------------------------------------------------------------------------------------:
         private void btnThemMoi_Click(object sender, EventArgs e) // f S X, t T L B
         {
             btnSua.Enabled = false;
@@ -109,6 +109,9 @@ namespace LAB_LTTQ.DanhMuc
 
             ResetValue();
         }
+
+
+        //------------------------------------------------------------------------------------:
         private void btnBoQua_Click(object sender, EventArgs e) // f S X L B, t T.
         {
             btnSua.Enabled = false;
@@ -119,6 +122,9 @@ namespace LAB_LTTQ.DanhMuc
 
             ResetValue();
         }
+
+
+        //------------------------------------------------------------------------------------:
         private void btnSua_Click(object sender, EventArgs e) // f T X, t L B
         {
             // Cấm Click vào các nút Thêm, Xóa. Click được vào nút Lưu, Bỏ qua
@@ -127,6 +133,9 @@ namespace LAB_LTTQ.DanhMuc
             btnLuu.Enabled = true;
             btnBoQua.Enabled = true;
         }
+
+
+        //------------------------------------------------------------------------------------:
         private void btnXoa_Click(object sender, EventArgs e) // 
         {
             if (MessageBox.Show("Bạn có muốn xóa không?", "Xóa mặt hàng",
@@ -147,6 +156,9 @@ namespace LAB_LTTQ.DanhMuc
             // Xóa trắng các dữ liệu trên các ô nhập liệu
             ResetValue();
         }
+
+
+        //------------------------------------------------------------------------------------:
         private void btnLuu_Click(object sender, EventArgs e)
         {
             // Kiểm tra tính đầy đủ của dữ liệu
@@ -162,7 +174,7 @@ namespace LAB_LTTQ.DanhMuc
             {
                 // Kiểm tra trùng mã
                 //DataTable dtSP = dtBase.DocBang("Select * from tblHang where MaHang='" + txtMaHang.Text + "'");
-                DataTable dtSP = dtBase.DocBang($@" Select * from tblHang where MaHang='{txtMaHang.Text}'");
+                DataTable dtSP = dtBase.DocBang($" Select * from tblHang where MaHang='{txtMaHang.Text}'");             // Ko cần có @ vì ko xuống dòng
 
                 if (dtSP.Rows.Count > 0)
                 {
@@ -170,8 +182,8 @@ namespace LAB_LTTQ.DanhMuc
                     txtMaHang.Focus();
                     return;
                 }
-
-                string sqlInsert = $@"  INSERT INTO tblHang 
+                                                                                                                        // Phải có @ vì xuống dòng
+                string sqlInsert = $@"  INSERT INTO tblHang                                                             
                                         VALUES (
                                         '{txtMaHang.Text}', 
                                         N'{txtTenHang.Text}', 
@@ -248,9 +260,19 @@ namespace LAB_LTTQ.DanhMuc
             
         }
 
+
+        //------------------------------------------------------------------------------------:
         private void btnThoat_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+
+        //------------------------------------------------------------------------------------:
+        private void btnTim_Click(object sender, EventArgs e)
+        {
+            lblTieuDe.Text = "KẾT QUẢ TÌM KIẾM";
+
         }
 
 

@@ -203,6 +203,7 @@
             this.btnTim.TabIndex = 18;
             this.btnTim.Text = "Tìm kiếm";
             this.btnTim.UseVisualStyleBackColor = true;
+            this.btnTim.Click += new System.EventHandler(this.btnTim_Click);
             // 
             // btnExcel
             // 
