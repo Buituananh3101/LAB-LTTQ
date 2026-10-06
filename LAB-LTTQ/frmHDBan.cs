@@ -187,14 +187,9 @@ namespace LAB_LTTQ
                 txtTenKhach.Text = dtDienThoai.Rows[0]["TenKhach"].ToString();
                 txtDiaChi.Text = dtDienThoai.Rows[0]["DiaChi"].ToString();
 
-                cboMaKhach.Enabled = false;
-                txtTenKhach.ReadOnly = true;
-                txtDiaChi.ReadOnly = true;
-                btnKhachHang.Enabled = false;
                 return;
             }
 
-            // Thêm khách mới, ngày sinh để NULL vì form không nhập
             string sqlInsert = $@"
                                 Insert Into tblKhach
                                     (Makhach, TenKhach, DiaChi, DienThoai, NgaySinh)
@@ -207,11 +202,7 @@ namespace LAB_LTTQ
 
             MessageBox.Show("Thêm khách hàng thành công");
 
-            // Giữ thông tin khách trên form để lập hóa đơn
-            cboMaKhach.Enabled = false;
-            txtTenKhach.ReadOnly = true;
-            txtDiaChi.ReadOnly = true;
-            btnKhachHang.Enabled = false;
+    
         }
     }
 }

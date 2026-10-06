@@ -125,7 +125,6 @@
             // 
             this.txtMaHDBan.Location = new System.Drawing.Point(140, 29);
             this.txtMaHDBan.Name = "txtMaHDBan";
-            this.txtMaHDBan.ReadOnly = true;
             this.txtMaHDBan.Size = new System.Drawing.Size(270, 29);
             this.txtMaHDBan.TabIndex = 0;
             // 
@@ -187,7 +186,6 @@
             // 
             this.txtTenNhanVien.Location = new System.Drawing.Point(140, 140);
             this.txtTenNhanVien.Name = "txtTenNhanVien";
-            this.txtTenNhanVien.ReadOnly = true;
             this.txtTenNhanVien.Size = new System.Drawing.Size(270, 29);
             this.txtTenNhanVien.TabIndex = 4;
             // 
@@ -232,7 +230,6 @@
             // 
             this.txtTenKhach.Location = new System.Drawing.Point(590, 66);
             this.txtTenKhach.Name = "txtTenKhach";
-            this.txtTenKhach.ReadOnly = true;
             this.txtTenKhach.Size = new System.Drawing.Size(270, 29);
             this.txtTenKhach.TabIndex = 7;
             // 
@@ -250,7 +247,6 @@
             this.txtDiaChi.Location = new System.Drawing.Point(590, 103);
             this.txtDiaChi.Multiline = true;
             this.txtDiaChi.Name = "txtDiaChi";
-            this.txtDiaChi.ReadOnly = true;
             this.txtDiaChi.Size = new System.Drawing.Size(270, 48);
             this.txtDiaChi.TabIndex = 8;
             // 
@@ -361,7 +357,6 @@
             // 
             this.txtTenHang.Location = new System.Drawing.Point(385, 29);
             this.txtTenHang.Name = "txtTenHang";
-            this.txtTenHang.ReadOnly = true;
             this.txtTenHang.Size = new System.Drawing.Size(200, 29);
             this.txtTenHang.TabIndex = 3;
             // 
@@ -403,7 +398,6 @@
             // 
             this.txtDonGia.Location = new System.Drawing.Point(715, 29);
             this.txtDonGia.Name = "txtDonGia";
-            this.txtDonGia.ReadOnly = true;
             this.txtDonGia.Size = new System.Drawing.Size(150, 29);
             this.txtDonGia.TabIndex = 5;
             // 
@@ -420,7 +414,6 @@
             // 
             this.txtThanhTien.Location = new System.Drawing.Point(715, 64);
             this.txtThanhTien.Name = "txtThanhTien";
-            this.txtThanhTien.ReadOnly = true;
             this.txtThanhTien.Size = new System.Drawing.Size(150, 29);
             this.txtThanhTien.TabIndex = 6;
             // 
@@ -463,7 +456,6 @@
             // 
             this.txtTongTien.Location = new System.Drawing.Point(715, 273);
             this.txtTongTien.Name = "txtTongTien";
-            this.txtTongTien.ReadOnly = true;
             this.txtTongTien.Size = new System.Drawing.Size(150, 29);
             this.txtTongTien.TabIndex = 8;
             // 
