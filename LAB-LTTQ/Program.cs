@@ -8,6 +8,7 @@ namespace LAB_LTTQ
 {
     internal static class Program
     {
+        static public string maNV = "NV01";// neu rong --> mo frmdangnhap, menu false di, 
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -16,7 +17,7 @@ namespace LAB_LTTQ
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new frmMain());
         }
     }
 }
