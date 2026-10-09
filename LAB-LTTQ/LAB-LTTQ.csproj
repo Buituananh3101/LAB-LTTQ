@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\DataProcessing.cs" />
+    <Compile Include="Classes\Function.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
