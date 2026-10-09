@@ -86,7 +86,7 @@
             this.txtSoPhieu.Location = new System.Drawing.Point(131, 29);
             this.txtSoPhieu.Name = "txtSoPhieu";
             this.txtSoPhieu.ReadOnly = true;
-            this.txtSoPhieu.Size = new System.Drawing.Size(137, 22);
+            this.txtSoPhieu.Size = new System.Drawing.Size(205, 22);
             this.txtSoPhieu.TabIndex = 1;
             this.txtSoPhieu.Text = "PN0001";
             // 
@@ -153,7 +153,7 @@
             this.txtDonViTinh.Location = new System.Drawing.Point(131, 155);
             this.txtDonViTinh.Name = "txtDonViTinh";
             this.txtDonViTinh.ReadOnly = true;
-            this.txtDonViTinh.Size = new System.Drawing.Size(108, 22);
+            this.txtDonViTinh.Size = new System.Drawing.Size(205, 22);
             this.txtDonViTinh.TabIndex = 8;
             // 
             // lblSoLuong
@@ -169,7 +169,7 @@
             // 
             this.txtSoLuong.Location = new System.Drawing.Point(131, 197);
             this.txtSoLuong.Name = "txtSoLuong";
-            this.txtSoLuong.Size = new System.Drawing.Size(125, 22);
+            this.txtSoLuong.Size = new System.Drawing.Size(205, 22);
             this.txtSoLuong.TabIndex = 10;
             // 
             // lblDonGia
@@ -185,7 +185,7 @@
             // 
             this.txtDonGia.Location = new System.Drawing.Point(131, 240);
             this.txtDonGia.Name = "txtDonGia";
-            this.txtDonGia.Size = new System.Drawing.Size(148, 22);
+            this.txtDonGia.Size = new System.Drawing.Size(205, 22);
             this.txtDonGia.TabIndex = 12;
             // 
             // lblNgayLap
@@ -199,11 +199,12 @@
             // 
             // dtpNgayLap
             // 
-            this.dtpNgayLap.CustomFormat = "dd/MM/yyyy";
-            this.dtpNgayLap.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpNgayLap.Cursor = System.Windows.Forms.Cursors.Default;
+            this.dtpNgayLap.CustomFormat = "";
+            this.dtpNgayLap.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpNgayLap.Location = new System.Drawing.Point(131, 283);
             this.dtpNgayLap.Name = "dtpNgayLap";
-            this.dtpNgayLap.Size = new System.Drawing.Size(148, 22);
+            this.dtpNgayLap.Size = new System.Drawing.Size(205, 22);
             this.dtpNgayLap.TabIndex = 14;
             // 
             // lblThanhTien
@@ -221,7 +222,7 @@
             this.txtThanhTien.Location = new System.Drawing.Point(131, 325);
             this.txtThanhTien.Name = "txtThanhTien";
             this.txtThanhTien.ReadOnly = true;
-            this.txtThanhTien.Size = new System.Drawing.Size(171, 22);
+            this.txtThanhTien.Size = new System.Drawing.Size(205, 22);
             this.txtThanhTien.TabIndex = 16;
             this.txtThanhTien.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
