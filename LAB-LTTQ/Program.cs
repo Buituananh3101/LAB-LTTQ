@@ -8,7 +8,7 @@ namespace LAB_LTTQ
 {
     internal static class Program
     {
-        static public string maNV = "NV01";// neu rong --> mo frmdangnhap, menu false di, 
+        static public string maNV = "";// neu rong --> mo frmdangnhap, menu false di, 
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

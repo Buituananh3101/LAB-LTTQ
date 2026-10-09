@@ -29,8 +29,11 @@ namespace LAB_LTTQ
 
         private void hoaDonBanToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
             Form frmHDBan = new frmHDBan();
             frmHDBan.ShowDialog();
+
+
         }
     }
 }

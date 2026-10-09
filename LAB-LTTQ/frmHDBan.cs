@@ -31,6 +31,15 @@ namespace LAB_LTTQ
             cboMaHDBan.SelectedIndex = -1;
             cboMaHDBan.Text = "";
 
+            DataTable dtNV = dtBase.ReadData($"Select * from tblNhanVien where Manhanvien = N'{Program.maNV.Replace("'", "''")}'");
+
+            if (dtNV.Rows.Count > 0)
+            {
+                cboMaNhanVien.Text = dtNV.Rows[0]["Manhanvien"].ToString();
+                txtTenNhanVien.Text = dtNV.Rows[0]["Tennhanvien"].ToString();
+            }
+
+
         }
 
         private void btnTimKiem_Click(object sender, EventArgs e)
