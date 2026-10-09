@@ -12,7 +12,7 @@ namespace LAB_LTTQ.Classes
     internal class DataProcessing
     {
         //----------------------------------------------------------------------------------------------------
-        string strConnect = "Data Source=localhost\\SQLEXPRESS; Database=QuanLyBanHangDoLuuNiem; Integrated Security=true"; // Khai báo server name, database name, user name, password
+        string strConnect = "Data Source=localhost\\SQLEXPRESS; Database=LTTQQuanLyKhoVatLieu; Integrated Security=true"; // Khai báo server name, database name, user name, password
         SqlConnection sqlConnection = null;
 
 
