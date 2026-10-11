@@ -27,14 +27,45 @@ namespace LAB_LTTQ
             txtTenNhanVien.Text = dt.Rows[0]["Tennhanvien"].ToString();
 
             //--------------------------------------------------------------------------------------------- 2
-            cboMaHDBan.DataSource = dtBase.ReadData($"select MaHDBan from  tblHDBan"); // cbo dữ liệu
+            cboMaHDBan.DataSource = dtBase.ReadData($"select MaHDBan from tblHDBan"); // cbo dữ liệu
             cboMaHDBan.DisplayMember = "MaHDBan";                                      // cbo hiển thị field nào trong dữ liệu
 
 
         }
 
+        //------------------------------------------------------------------------------------------------- 3
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
+            string MaHDBan = cboMaHDBan.Text.Trim();
+            txtMaHDBan.Text = MaHDBan;
+            // dgv
+            dgvHDBan.DataSource = dtBase.ReadData($@"
+                                                     select c.MaHang, h.TenHang, h.DonGiaBan, c.SoLuong, c.GiamGia, c.ThanhTien
+                                                     from tblChiTietHDBan c join tblHang h on c.MaHang=h.Mahang
+                                                     where c.MaHDBan = '{MaHDBan}'");
+            // ngay ban
+            DataTable dt1 = dtBase.ReadData($@"
+                                            select NgayBan
+                                            from tblHDBan
+                                            where MaHDBan = '{MaHDBan}'");
+            dtpNgayBan.Value = Convert.ToDateTime(dt1.Rows[0]["NgayBan"]);
+
+            // khach hang
+            DataTable dt2 = dtBase.ReadData($@"
+                                            select * 
+                                            from tblHDBan h join tblKhach k on h.MaKhach=k.Makhach");
+            cboMaKhach.Text = dt2.Rows[0]["MaKhach"].ToString();
+            txtTenKhach.Text = dt2.Rows[0]["TenKhach"].ToString();
+            txtDiaChi.Text = dt2.Rows[0]["DiaChi"].ToString();
+            txtDienThoai.Text = dt2.Rows[0]["DienThoai"].ToString();
+
+            // tong tien 
+            DataTable dt3 = dtBase.ReadData($@"
+                                            select TongTien
+                                            from tblHDBan
+                                            where MaHDBan = '{MaHDBan}'");
+            txtTongTien.Text = dt3.Rows[0]["TongTien"].ToString();
+
 
         }
     }
