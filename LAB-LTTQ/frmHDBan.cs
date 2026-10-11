@@ -118,6 +118,22 @@ namespace LAB_LTTQ
                 if (dt.Rows.Count <= 0) return;
                 txtTenHang.Text = dt.Rows[0]["TenHang"].ToString();
                 txtDonGia.Text = dt.Rows[0]["DonGiaBan"].ToString();
+                
+            }
+        }
+
+
+        //---------------------------------------------------------------------------------------------- 6
+        private void txtSoLuong_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (txtSoLuong.Text != "" && txtGiamGia.Text != "")
+                {
+                    txtThanhTien.Text = (float.Parse(txtDonGia.Text.Trim()) *
+                                         int.Parse(txtSoLuong.Text.Trim()) *
+                                         float.Parse(txtGiamGia.Text.Trim()) / 100).ToString();
+                }
             }
         }
     }

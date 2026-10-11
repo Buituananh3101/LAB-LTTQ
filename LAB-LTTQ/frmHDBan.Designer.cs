@@ -343,6 +343,7 @@
             this.txtSoLuong.Name = "txtSoLuong";
             this.txtSoLuong.Size = new System.Drawing.Size(170, 29);
             this.txtSoLuong.TabIndex = 2;
+            this.txtSoLuong.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSoLuong_KeyDown);
             // 
             // lblTenHang
             // 
@@ -375,6 +376,7 @@
             this.txtGiamGia.Name = "txtGiamGia";
             this.txtGiamGia.Size = new System.Drawing.Size(165, 29);
             this.txtGiamGia.TabIndex = 4;
+            this.txtGiamGia.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSoLuong_KeyDown);
             // 
             // lblPhanTram
             // 
