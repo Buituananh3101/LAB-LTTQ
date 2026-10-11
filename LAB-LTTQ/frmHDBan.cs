@@ -136,5 +136,48 @@ namespace LAB_LTTQ
                 }
             }
         }
+
+        //---------------------------------------------------------------------------------------------- 7
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            dtpNgayBan.Value = DateTime.Now;
+
+            cboMaKhach.Text = "";
+            txtTenKhach.Text = "";
+            txtDiaChi.Text = "";
+            txtDienThoai.Text = "";
+
+            cboMaHang.Text = "";
+            txtTenHang.Text = "";
+            txtDonGia.Text = "";
+            txtSoLuong.Text = "";
+            txtGiamGia.Text = "";
+            txtThanhTien.Text = "";
+
+            dgvHDBan.DataSource = null;
+
+            txtTongTien.Text = "";
+
+            string datePart = DateTime.Now.ToString("ddMMyyyy");
+            string prefix = "HĐB_" + datePart;
+
+            DataTable dt = dtBase.ReadData($"select top 1 MaHDBan from tblHDBan where MaHDBan like '{prefix}%' order by MaHDBan desc");
+
+            if (dt.Rows.Count > 0)
+            {
+                string maCuoi = dt.Rows[0]["MaHDBan"].ToString();
+                int soTiepTheo = int.Parse(maCuoi.Substring(12)) + 1; // Bỏ 12 ký tự đầu (HĐB_ddMMyyyy)
+
+                // .ToString("D4") sẽ tự động ép thành định dạng 4 chữ số, VD: 1 -> 0001
+                txtMaHDBan.Text = prefix + soTiepTheo.ToString("D4");
+            }
+            else
+            {
+                // Nếu đây là hóa đơn đầu tiên trong ngày
+                txtMaHDBan.Text = prefix + "0001";
+            }
+        }
+
+
     }
 }
