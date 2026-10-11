@@ -31,10 +31,9 @@ namespace LAB_LTTQ
             cboMaHDBan.DisplayMember = "MaHDBan";                                      // cbo hiển thị field nào trong dữ liệu
 
 
-
-
         }
 
+        //------------------------------------------------------------------------------------------------- 3
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
 
