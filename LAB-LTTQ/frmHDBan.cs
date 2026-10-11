@@ -33,7 +33,6 @@ namespace LAB_LTTQ
 
         }
 
-        //------------------------------------------------------------------------------------------------- 3
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
 
