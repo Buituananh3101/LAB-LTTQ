@@ -11,7 +11,7 @@ namespace LAB_LTTQ.classes
     internal class Function
     {
         public void FillComboBox(ComboBox cb, DataTable dt, string display, string value)  // cài đặt nhannh combobox
-        {                                                                              // cb        nhận dữ liệu
+        {                                                                              // cb        nơi nhận dữ liệu
                                                                                        // dt        dữ liệu từ csdl
                                                                                        // display   tên chất liệu
                                                                                        // value     mã chất liệu

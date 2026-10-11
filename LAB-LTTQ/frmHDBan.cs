@@ -26,8 +26,17 @@ namespace LAB_LTTQ
             cboMaNhanVien.Text = dt.Rows[0]["Manhanvien"].ToString();
             txtTenNhanVien.Text = dt.Rows[0]["Tennhanvien"].ToString();
 
-            //
+            //--------------------------------------------------------------------------------------------- 2
+            cboMaHDBan.DataSource = dtBase.ReadData($"select MaHDBan from  tblHDBan"); // cbo dữ liệu
+            cboMaHDBan.DisplayMember = "MaHDBan";                                      // cbo hiển thị field nào trong dữ liệu
 
+
+
+
+        }
+
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
 
         }
     }
