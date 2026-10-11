@@ -31,6 +31,10 @@ namespace LAB_LTTQ
             cboMaHDBan.DisplayMember = "MaHDBan";                                      // cbo hiển thị field nào trong dữ liệu
 
 
+            //--------------------------------------------------------------------------------------------- 5.1
+            cboMaHang.DataSource = dtBase.ReadData($"select * from tblHang");
+            cboMaHang.DisplayMember = "Mahang";
+
         }
 
         //------------------------------------------------------------------------------------------------- 3
@@ -104,5 +108,17 @@ namespace LAB_LTTQ
         }
 
 
+        //--------------------------------------------------------------------------------------------- 5.2
+        private void cboMaHang_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboMaHang.SelectedIndex != -1)
+            {
+                string Mahang = cboMaHang.Text.Trim();
+                DataTable dt = dtBase.ReadData($"select * from tblHang where Mahang='{Mahang}'");
+                if (dt.Rows.Count <= 0) return;
+                txtTenHang.Text = dt.Rows[0]["TenHang"].ToString();
+                txtDonGia.Text = dt.Rows[0]["DonGiaBan"].ToString();
+            }
+        }
     }
 }

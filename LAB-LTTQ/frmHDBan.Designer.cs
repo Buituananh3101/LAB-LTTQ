@@ -316,6 +316,7 @@
             this.cboMaHang.Name = "cboMaHang";
             this.cboMaHang.Size = new System.Drawing.Size(120, 29);
             this.cboMaHang.TabIndex = 0;
+            this.cboMaHang.SelectedIndexChanged += new System.EventHandler(this.cboMaHang_SelectedIndexChanged);
             // 
             // btnHang
             // 
