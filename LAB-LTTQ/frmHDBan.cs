@@ -38,11 +38,15 @@ namespace LAB_LTTQ
         {
             string MaHDBan = cboMaHDBan.Text.Trim();
             txtMaHDBan.Text = MaHDBan;
+
             // dgv
-            dgvHDBan.DataSource = dtBase.ReadData($@"
-                                                     select c.MaHang, h.TenHang, h.DonGiaBan, c.SoLuong, c.GiamGia, c.ThanhTien
-                                                     from tblChiTietHDBan c join tblHang h on c.MaHang=h.Mahang
-                                                     where c.MaHDBan = '{MaHDBan}'");
+            DataTable dt = dtBase.ReadData($@"
+                                            select c.MaHang, h.TenHang, h.DonGiaBan, c.SoLuong, c.GiamGia, c.ThanhTien
+                                            from tblChiTietHDBan c join tblHang h on c.MaHang=h.Mahang
+                                            where c.MaHDBan = '{MaHDBan}'");
+            if (dt.Rows.Count <= 0) return;
+            dgvHDBan.DataSource = dt;
+
             // ngay ban
             DataTable dt1 = dtBase.ReadData($@"
                                             select NgayBan
