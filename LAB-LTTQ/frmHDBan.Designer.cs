@@ -264,6 +264,7 @@
             this.txtDienThoai.Name = "txtDienThoai";
             this.txtDienThoai.Size = new System.Drawing.Size(270, 29);
             this.txtDienThoai.TabIndex = 9;
+            this.txtDienThoai.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDienThoai_KeyDown);
             // 
             // grpMatHang
             // 

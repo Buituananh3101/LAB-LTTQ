@@ -68,5 +68,37 @@ namespace LAB_LTTQ
 
 
         }
+
+
+        //------------------------------------------------------------------------------------------------- 4.1
+        private void txtDienThoai_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                DataTable dt2 = dtBase.ReadData($@"select * from tblKhach where DienThoai = '{txtDienThoai.Text.Trim()}'");
+
+                if (dt2.Rows.Count > 0)
+                {
+                    cboMaKhach.Text = dt2.Rows[0]["MaKhach"].ToString();
+                    txtTenKhach.Text = dt2.Rows[0]["TenKhach"].ToString();
+                    txtDiaChi.Text = dt2.Rows[0]["DiaChi"].ToString();
+                    txtDienThoai.Text = dt2.Rows[0]["DienThoai"].ToString();
+
+                    //e.SuppressKeyPress = true; // Tắt tiếng "bíp" của Windows
+                }
+                else if(MessageBox.Show("Khach nay chua co trong CSDL, ban co muon them ko?","",MessageBoxButtons.YesNo)==DialogResult.Yes)
+                {
+
+                    dtBase.ChangeData($@"
+                                        insert into tblKhach
+                                        values('{cboMaKhach.Text+"1"}','{txtTenKhach.Text}','{txtDiaChi.Text}','{txtDienThoai.Text}',NULL)");
+                                                                // :)) + "1" vao de ko trung key
+                }
+
+
+            }
+        }
+
+
     }
 }
