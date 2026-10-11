@@ -132,7 +132,7 @@ namespace LAB_LTTQ
                 {
                     txtThanhTien.Text = (float.Parse(txtDonGia.Text.Trim()) *
                                          int.Parse(txtSoLuong.Text.Trim()) *
-                                         float.Parse(txtGiamGia.Text.Trim()) / 100).ToString();
+                                         (100-float.Parse(txtGiamGia.Text.Trim())) / 100).ToString();
                 }
             }
         }
@@ -179,5 +179,111 @@ namespace LAB_LTTQ
         }
 
 
+        //---------------------------------------------------------------------------------------------- 8
+        //Khi nhấn nút lưu hóa đơn thì lưu thông tin hóa đơn và chi tiết hóa đơn vào
+        //CSDL đồng thời trừ số lượng tương ứng của các mặt hàng. (đồng thời kiểm
+        //tra việc ko đủ số lượng). Tính tổng tiền hóa đơn.Trên form cần hiển thị các
+        //thông tin của hóa đơn đó.
+        private void btnLuu_Click(object sender, EventArgs e)
+        {
+            // 1. KIỂM TRA DỮ LIỆU ĐẦU VÀO CỦA MẶT HÀNG
+            if (cboMaHang.Text == "" || txtTenHang.Text == "" || txtDonGia.Text == "" || 
+                txtSoLuong.Text == "" || txtGiamGia.Text == "" || txtThanhTien.Text == "")
+            {
+                MessageBox.Show("Vui lòng nhập đủ thông tin mặt hàng cần thêm!");
+                return;
+            }
+
+            string Mahang = cboMaHang.Text.Trim();
+            int SoLuong = int.Parse(txtSoLuong.Text.Trim());
+            string MaHDBan = txtMaHDBan.Text.Trim();
+
+            // 2. KIỂM TRA SỐ LƯỢNG TỒN TRONG KHO
+            DataTable dt = dtBase.ReadData($"select * from tblHang where Mahang='{Mahang}'");
+            if (dt.Rows.Count > 0)
+            {
+                int soLuongTon = int.Parse(dt.Rows[0]["SoLuong"].ToString());
+                if (soLuongTon < SoLuong)
+                {
+                    MessageBox.Show($"Số lượng không đủ! Mặt hàng này chỉ còn {soLuongTon} sản phẩm.");
+                    return;
+                }
+            }
+
+            // 3. XỬ LÝ VỎ HÓA ĐƠN (Thông tin chung)
+            DataTable dt1 = dtBase.ReadData($"select * from tblHDBan where MaHDBan = '{MaHDBan}'");
+            if (dt1.Rows.Count == 0) 
+            {
+                if (cboMaKhach.Text == "" || txtTenKhach.Text == "" || txtDiaChi.Text == "" || txtDienThoai.Text == "")
+                {
+                    MessageBox.Show("Đây là hóa đơn mới, vui lòng nhập đủ thông tin Khách hàng!");
+                    return;
+                }
+
+                dtBase.ChangeData($@"
+                    INSERT INTO tblHDBan (MaHDBan, MaNhanVien, NgayBan, MaKhach, TongTien) 
+                    VALUES ('{MaHDBan}', '{Program.maNV}', '{dtpNgayBan.Value.ToString("yyyy-MM-dd")}', '{cboMaKhach.Text.Trim()}', 0)");
+            }
+
+            // 4. KIỂM TRA TRÙNG MẶT HÀNG TRONG HÓA ĐƠN NÀY
+            DataTable dtChiTiet = dtBase.ReadData($"select * from tblChiTietHDBan where MaHDBan='{MaHDBan}' and MaHang='{Mahang}'");
+            if (dtChiTiet.Rows.Count > 0)
+            {
+                MessageBox.Show("Mặt hàng này đã có trong hóa đơn. Vui lòng chọn mã hàng khác!");
+                return;
+            }
+
+            // 5. THÊM VÀO CHI TIẾT HÓA ĐƠN VÀ TRỪ TỒN KHO
+            float donGia = float.Parse(txtDonGia.Text.Trim());
+            float giamGia = float.Parse(txtGiamGia.Text.Trim());
+            float thanhTien = float.Parse(txtThanhTien.Text.Trim());
+
+            // Thêm mặt hàng
+            dtBase.ChangeData($@"
+                    INSERT INTO tblChiTietHDBan (MaHDBan, MaHang, SoLuong, GiamGia, ThanhTien) 
+                    VALUES ('{MaHDBan}', '{Mahang}', {SoLuong}, {giamGia}, {thanhTien})");
+            
+            // Trừ số lượng kho
+            dtBase.ChangeData($"UPDATE tblHang SET SoLuong = SoLuong - {SoLuong} WHERE MaHang = '{Mahang}'");
+            
+            // Cộng dồn tiền vào tổng hóa đơn
+            dtBase.ChangeData($"UPDATE tblHDBan SET TongTien = TongTien + {thanhTien} WHERE MaHDBan = '{MaHDBan}'");
+
+            // 6. CẬP NHẬT LẠI GIAO DIỆN FORM
+            // Tải lại GridView
+            dgvHDBan.DataSource = dtBase.ReadData($@"
+                select c.MaHang, h.TenHang, h.DonGiaBan, c.SoLuong, c.GiamGia, c.ThanhTien
+                from tblChiTietHDBan c join tblHang h on c.MaHang=h.Mahang
+                where c.MaHDBan = '{MaHDBan}'");
+
+            // Lấy lại tổng tiền mới đưa lên text box
+            DataTable dtTongTien = dtBase.ReadData($"select TongTien from tblHDBan where MaHDBan = '{MaHDBan}'");
+            if (dtTongTien.Rows.Count > 0)
+            {
+                txtTongTien.Text = dtTongTien.Rows[0]["TongTien"].ToString();
+            }
+
+            // Xóa các ô nhập mặt hàng để người dùng nhập món tiếp theo
+            cboMaHang.Text = ""; 
+            txtTenHang.Text = ""; 
+            txtSoLuong.Text = ""; 
+            txtGiamGia.Text = ""; 
+            txtDonGia.Text = ""; 
+            txtThanhTien.Text = "";
+    
+            // Đưa con trỏ chuột quay lại ô chọn mặt hàng
+            cboMaHang.Focus();
+
+            //Bắt đầu
+            //➔ Kiểm tra rỗng(Nếu thiếu thông tin mặt hàng: Báo lỗi, Dừng)
+            //➔ Kiểm tra tồn kho(Nếu Kho < Số lượng mua: Báo lỗi, Dừng)
+            //➔ Kiểm tra Hóa đơn(Nếu chưa có mã hóa đơn này trong CSDL ➔ Tạo mới vỏ Hóa đơn)
+            //➔ Kiểm tra trùng mã hàng(Nếu mặt hàng đã có trong hóa đơn này: Báo lỗi, Dừng)
+            //➔ Lưu Chi tiết Hóa đơn(Thêm mặt hàng vừa chọn vào CSDL)
+            //➔ Trừ kho(Cập nhật lại số lượng hàng)
+            //➔ Tính tổng tiền(Cộng dồn thành tiền vào Hóa đơn)
+            //➔ Làm mới Giao diện(Tải lại lưới, hiện tổng tiền mới, xóa trắng các ô mặt hàng)
+            //➔ Kết thúc.
+        }
     }
 }
