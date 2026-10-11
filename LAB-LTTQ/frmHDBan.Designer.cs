@@ -215,7 +215,6 @@
             this.btnKhachHang.TabIndex = 6;
             this.btnKhachHang.Text = "...";
             this.btnKhachHang.UseVisualStyleBackColor = true;
-            //this.btnKhachHang.Click += new System.EventHandler(this.btnKhachHang_Click);
             // 
             // lblTenKhach
             // 
@@ -265,7 +264,6 @@
             this.txtDienThoai.Name = "txtDienThoai";
             this.txtDienThoai.Size = new System.Drawing.Size(270, 29);
             this.txtDienThoai.TabIndex = 9;
-            //this.txtDienThoai.Leave += new System.EventHandler(this.txtDienThoai_Leave);
             // 
             // grpMatHang
             // 
@@ -538,7 +536,6 @@
             this.btnTimKiem.TabIndex = 3;
             this.btnTimKiem.Text = "Tìm kiếm";
             this.btnTimKiem.UseVisualStyleBackColor = true;
-            //this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
             // frmHDBan
             // 
@@ -557,7 +554,7 @@
             this.Name = "frmHDBan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hóa đơn bán";
-            //this.Load += new System.EventHandler(this.frmHDBan_Load);
+            this.Load += new System.EventHandler(this.frmHDBan_Load);
             this.grpThongTinChung.ResumeLayout(false);
             this.grpThongTinChung.PerformLayout();
             this.grpMatHang.ResumeLayout(false);
