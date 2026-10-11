@@ -49,7 +49,7 @@
             this.hoaDonBanToolStripMenuItem.Name = "hoaDonBanToolStripMenuItem";
             this.hoaDonBanToolStripMenuItem.Size = new System.Drawing.Size(110, 24);
             this.hoaDonBanToolStripMenuItem.Text = "Hoa don Ban";
-            //this.hoaDonBanToolStripMenuItem.Click += new System.EventHandler(this.hoaDonBanToolStripMenuItem_Click);
+            this.hoaDonBanToolStripMenuItem.Click += new System.EventHandler(this.hoaDonBanToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -60,7 +60,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmMain";
             this.Text = "frmMain";
-            //this.Load += new System.EventHandler(this.frmMain_Load);
+            this.Load += new System.EventHandler(this.frmMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

@@ -75,7 +75,7 @@
             this.btnDangNhap.TabIndex = 2;
             this.btnDangNhap.Text = "Dang nhap";
             this.btnDangNhap.UseVisualStyleBackColor = true;
-            //this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);
+            this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);
             // 
             // frmDangNhap
             // 
@@ -89,7 +89,6 @@
             this.Controls.Add(this.label1);
             this.Name = "frmDangNhap";
             this.Text = "frmDangNhap";
-            //this.Load += new System.EventHandler(this.frmDangNhap_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

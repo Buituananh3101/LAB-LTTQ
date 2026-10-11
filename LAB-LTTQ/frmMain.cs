@@ -16,5 +16,21 @@ namespace LAB_LTTQ
         {
             InitializeComponent();
         }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            if (Program.maNV == "")
+            {
+                this.Hide();
+                frmDangNhap frmDN = new frmDangNhap();
+                frmDN.ShowDialog();
+            }
+        }
+
+        private void hoaDonBanToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmHDBan hdb = new frmHDBan();
+            hdb.ShowDialog();
+        }
     }
 }
