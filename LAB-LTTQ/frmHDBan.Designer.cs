@@ -434,6 +434,7 @@
             this.dgvHDBan.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvHDBan.Size = new System.Drawing.Size(845, 150);
             this.dgvHDBan.TabIndex = 7;
+            this.dgvHDBan.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHDBan_CellDoubleClick);
             // 
             // lblHuongDan
             // 

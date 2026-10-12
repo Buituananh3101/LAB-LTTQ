@@ -19,6 +19,14 @@ namespace LAB_LTTQ
             InitializeComponent();
         }
 
+        public void loadLaiBangChiTietHoaDon(string MaHDBan)
+        {
+            dgvHDBan.DataSource = dtBase.ReadData($@"
+                                            select c.MaHang, h.TenHang, h.DonGiaBan, c.SoLuong, c.GiamGia, c.ThanhTien
+                                            from tblChiTietHDBan c join tblHang h on c.MaHang=h.Mahang
+                                            where c.MaHDBan = '{MaHDBan}'");
+        }
+
         private void frmHDBan_Load(object sender, EventArgs e)
         {
             //--------------------------------------------------------------------------------------------- 1
@@ -250,11 +258,7 @@ namespace LAB_LTTQ
             dtBase.ChangeData($"UPDATE tblHDBan SET TongTien = TongTien + {thanhTien} WHERE MaHDBan = '{MaHDBan}'");
 
             // 6. CẬP NHẬT LẠI GIAO DIỆN FORM
-            // Tải lại GridView
-            dgvHDBan.DataSource = dtBase.ReadData($@"
-                select c.MaHang, h.TenHang, h.DonGiaBan, c.SoLuong, c.GiamGia, c.ThanhTien
-                from tblChiTietHDBan c join tblHang h on c.MaHang=h.Mahang
-                where c.MaHDBan = '{MaHDBan}'");
+            loadLaiBangChiTietHoaDon(MaHDBan);
 
             // Lấy lại tổng tiền mới đưa lên text box
             DataTable dtTongTien = dtBase.ReadData($"select TongTien from tblHDBan where MaHDBan = '{MaHDBan}'");
@@ -285,5 +289,26 @@ namespace LAB_LTTQ
             //➔ Làm mới Giao diện(Tải lại lưới, hiện tổng tiền mới, xóa trắng các ô mặt hàng)
             //➔ Kết thúc.
         }
+
+
+        //---------------------------------------------------------------------------------------------- 9
+        //Khi khách muốn trả một sản phẩm thì có thể click đúp vào sản phẩm đó và 
+        //xóa.
+        private void dgvHDBan_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.RowIndex >= 0)
+            {
+                if (MessageBox.Show("Xac nhan xoa", "", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                {
+                    string MaHang = dgvHDBan.Rows[e.RowIndex].Cells["MaHang"].Value.ToString();
+                    dtBase.ChangeData($"delete from tblChiTietHDBan where MaHang='{MaHang}'");
+                    loadLaiBangChiTietHoaDon(txtMaHDBan.Text.Trim());
+                }
+            }
+        }
+
+        
+
+
     }
 }
