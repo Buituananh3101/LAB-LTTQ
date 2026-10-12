@@ -21,7 +21,7 @@ namespace LAB_LTTQ
 
         private void btnHuyBo_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         private void btnDangNhap_Click(object sender, EventArgs e)
@@ -29,13 +29,16 @@ namespace LAB_LTTQ
             string userName = txtTenDangNhap.Text.Trim();
             string passWord = txtMatKhau.Text.Trim();
 
-            DataTable dt = dtBase.ReadData($@"select * from tblUser where userName='{userName}' and passWord like '{passWord}'");
+            DataTable dt = dtBase.ReadData($@"select * from tblUser where userName='{userName}' and passWord = '{passWord}'");
             if (dt.Rows.Count > 0)
             {
                 Program.tenNV = userName;
-                this.Hide();
-                frmMain frm = new frmMain();
-                frm.ShowDialog();
+                this.Close();
+            }
+            else
+            {
+                txtMatKhau.Clear();
+                txtMatKhau.Focus();
             }
         }
     }
