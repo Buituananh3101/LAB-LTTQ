@@ -186,7 +186,7 @@ namespace LAB_LTTQ
         //thông tin của hóa đơn đó.
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            // 1. KIỂM TRA DỮ LIỆU ĐẦU VÀO CỦA MẶT HÀNG
+            // 1. Check đầu vào
             if (cboMaHang.Text == "" || txtTenHang.Text == "" || txtDonGia.Text == "" || 
                 txtSoLuong.Text == "" || txtGiamGia.Text == "" || txtThanhTien.Text == "")
             {
@@ -198,7 +198,7 @@ namespace LAB_LTTQ
             int SoLuong = int.Parse(txtSoLuong.Text.Trim());
             string MaHDBan = txtMaHDBan.Text.Trim();
 
-            // 2. KIỂM TRA SỐ LƯỢNG TỒN TRONG KHO
+            // 2. Kiểm tra tồn
             DataTable dt = dtBase.ReadData($"select * from tblHang where Mahang='{Mahang}'");
             if (dt.Rows.Count > 0)
             {
@@ -210,10 +210,11 @@ namespace LAB_LTTQ
                 }
             }
 
-            // 3. XỬ LÝ VỎ HÓA ĐƠN (Thông tin chung)
+            // 3. Tạo hóa đơn (vỏ)
             DataTable dt1 = dtBase.ReadData($"select * from tblHDBan where MaHDBan = '{MaHDBan}'");
             if (dt1.Rows.Count == 0) 
             {
+                // Hóa đơn mới phải nhập thông tin khách
                 if (cboMaKhach.Text == "" || txtTenKhach.Text == "" || txtDiaChi.Text == "" || txtDienThoai.Text == "")
                 {
                     MessageBox.Show("Đây là hóa đơn mới, vui lòng nhập đủ thông tin Khách hàng!");
@@ -225,7 +226,7 @@ namespace LAB_LTTQ
                     VALUES ('{MaHDBan}', '{Program.maNV}', '{dtpNgayBan.Value.ToString("yyyy-MM-dd")}', '{cboMaKhach.Text.Trim()}', 0)");
             }
 
-            // 4. KIỂM TRA TRÙNG MẶT HÀNG TRONG HÓA ĐƠN NÀY
+            // 4. Check hàng có trong hóa đơn chưa
             DataTable dtChiTiet = dtBase.ReadData($"select * from tblChiTietHDBan where MaHDBan='{MaHDBan}' and MaHang='{Mahang}'");
             if (dtChiTiet.Rows.Count > 0)
             {
@@ -233,37 +234,36 @@ namespace LAB_LTTQ
                 return;
             }
 
-            // 5. THÊM VÀO CHI TIẾT HÓA ĐƠN VÀ TRỪ TỒN KHO
+            // 5. Thêm hàng vào ChiTietHoaDon + trừ tồn + tính lại tổng tiền
             float donGia = float.Parse(txtDonGia.Text.Trim());
             float giamGia = float.Parse(txtGiamGia.Text.Trim());
             float thanhTien = float.Parse(txtThanhTien.Text.Trim());
 
-            // Thêm mặt hàng
+            // 5.1 Thêm hàng vào ChiTietHoaDon
             dtBase.ChangeData($@"
                     INSERT INTO tblChiTietHDBan (MaHDBan, MaHang, SoLuong, GiamGia, ThanhTien) 
                     VALUES ('{MaHDBan}', '{Mahang}', {SoLuong}, {giamGia}, {thanhTien})");
             
-            // Trừ số lượng kho
+            // 5.2 Trừ số lượng kho
             dtBase.ChangeData($"UPDATE tblHang SET SoLuong = SoLuong - {SoLuong} WHERE MaHang = '{Mahang}'");
             
-            // Cộng dồn tiền vào tổng hóa đơn
+            // 5.3 Cộng dồn tiền vào tổng hóa đơn
             dtBase.ChangeData($"UPDATE tblHDBan SET TongTien = TongTien + {thanhTien} WHERE MaHDBan = '{MaHDBan}'");
 
-            // 6. CẬP NHẬT LẠI GIAO DIỆN FORM
-            // Tải lại GridView
+            // 6. Load lại dgv ChiTietHoaDon
             dgvHDBan.DataSource = dtBase.ReadData($@"
                 select c.MaHang, h.TenHang, h.DonGiaBan, c.SoLuong, c.GiamGia, c.ThanhTien
                 from tblChiTietHDBan c join tblHang h on c.MaHang=h.Mahang
                 where c.MaHDBan = '{MaHDBan}'");
 
-            // Lấy lại tổng tiền mới đưa lên text box
+            // 7. Lấy lại tổng tiền mới đưa lên text box
             DataTable dtTongTien = dtBase.ReadData($"select TongTien from tblHDBan where MaHDBan = '{MaHDBan}'");
             if (dtTongTien.Rows.Count > 0)
             {
                 txtTongTien.Text = dtTongTien.Rows[0]["TongTien"].ToString();
             }
 
-            // Xóa các ô nhập mặt hàng để người dùng nhập món tiếp theo
+            // 8. Xóa các ô nhập mặt hàng để người dùng nhập món tiếp theo
             cboMaHang.Text = ""; 
             txtTenHang.Text = ""; 
             txtSoLuong.Text = ""; 
@@ -271,7 +271,7 @@ namespace LAB_LTTQ
             txtDonGia.Text = ""; 
             txtThanhTien.Text = "";
     
-            // Đưa con trỏ chuột quay lại ô chọn mặt hàng
+            // 9. Đưa con trỏ chuột quay lại ô chọn mặt hàng
             cboMaHang.Focus();
 
             //Bắt đầu
