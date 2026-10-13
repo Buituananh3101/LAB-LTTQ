@@ -118,6 +118,10 @@ namespace LAB_LTTQ
                 if (dt.Rows.Count <= 0) return;
                 txtTenHang.Text = dt.Rows[0]["TenHang"].ToString();
                 txtDonGia.Text = dt.Rows[0]["DonGiaBan"].ToString();
+
+                txtSoLuong.Text = "";
+                txtGiamGia.Text = "";
+                txtThanhTien.Text = "";
             }
         }
     }
