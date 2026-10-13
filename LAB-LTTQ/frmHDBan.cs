@@ -180,10 +180,10 @@ namespace LAB_LTTQ
 
 
         //---------------------------------------------------------------------------------------------- 8
-        //Khi nhấn nút lưu hóa đơn thì lưu thông tin hóa đơn và chi tiết hóa đơn vào
-        //CSDL đồng thời trừ số lượng tương ứng của các mặt hàng. (đồng thời kiểm
-        //tra việc ko đủ số lượng). Tính tổng tiền hóa đơn.Trên form cần hiển thị các
-        //thông tin của hóa đơn đó.
+        // Khi nhấn nút lưu hóa đơn thì lưu thông tin hóa đơn và chi tiết hóa đơn vào
+        // CSDL đồng thời trừ số lượng tương ứng của các mặt hàng. (đồng thời kiểm
+        // tra việc ko đủ số lượng). Tính tổng tiền hóa đơn.Trên form cần hiển thị các
+        // thông tin của hóa đơn đó.
         private void btnLuu_Click(object sender, EventArgs e)
         {
             // 1. Check đầu vào
