@@ -161,7 +161,7 @@ namespace LAB_LTTQ
             string datePart = DateTime.Now.ToString("ddMMyyyy");
             string prefix = "HĐB_" + datePart;
 
-            DataTable dt = dtBase.ReadData($"select top 1 MaHDBan from tblHDBan where MaHDBan like '{prefix}%' order by MaHDBan desc");
+            DataTable dt = dtBase.ReadData($"select top 1 * from tblHDBan where MaHDBan like '{prefix}%' order by MaHDBan desc");
 
             if (dt.Rows.Count > 0)
             {
