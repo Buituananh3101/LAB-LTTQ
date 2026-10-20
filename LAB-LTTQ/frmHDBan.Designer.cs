@@ -500,6 +500,7 @@
             this.btnHuy.TabIndex = 11;
             this.btnHuy.Text = "Hủy hóa đơn";
             this.btnHuy.UseVisualStyleBackColor = true;
+            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
             // btnIn
             // 
@@ -509,6 +510,7 @@
             this.btnIn.TabIndex = 12;
             this.btnIn.Text = "In hóa đơn";
             this.btnIn.UseVisualStyleBackColor = true;
+            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
             // 
             // btnDong
             // 

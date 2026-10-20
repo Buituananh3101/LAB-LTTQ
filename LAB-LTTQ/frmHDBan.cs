@@ -307,8 +307,52 @@ namespace LAB_LTTQ
             }
         }
 
-        
 
+        //---------------------------------------------------------------------------------------------- 10
+        private void btnHuy_Click(object sender, EventArgs e)
+        {
+            string MaHDBan = txtMaHDBan.Text.Trim();
 
+            if (MaHDBan == "")
+            {
+                MessageBox.Show("Chưa chọn hoặc chưa có hóa đơn nào để hủy!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Yêu cầu người dùng xác nhận trước khi xóa
+            if (MessageBox.Show($"Bạn có chắc chắn muốn hủy hóa đơn {MaHDBan} không?", "Xác nhận hủy", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                // 1. Lấy danh sách các mặt hàng trong hóa đơn này để hoàn lại số lượng tồn kho
+                DataTable dtChiTiet = dtBase.ReadData($"select MaHang, SoLuong from tblChiTietHDBan where MaHDBan = '{MaHDBan}'");
+
+                if (dtChiTiet.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dtChiTiet.Rows.Count; i++)
+                    {
+                        string maHang = dtChiTiet.Rows[i]["MaHang"].ToString();
+                        int soLuong = int.Parse(dtChiTiet.Rows[i]["SoLuong"].ToString());
+
+                        // Trả lại số lượng cho bảng Hàng
+                        dtBase.ChangeData($"update tblHang set SoLuong = SoLuong + {soLuong} where Mahang = '{maHang}'");
+                    }
+                }
+
+                // 2. Xóa các bản ghi trong bảng Chi Tiết Hóa Đơn
+                dtBase.ChangeData($"delete from tblChiTietHDBan where MaHDBan = '{MaHDBan}'");
+
+                // 3. Xóa bản ghi trong bảng Hóa Đơn (vỏ hóa đơn)
+                dtBase.ChangeData($"delete from tblHDBan where MaHDBan = '{MaHDBan}'");
+
+                MessageBox.Show("Đã hủy hóa đơn thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // 4. Làm mới lại giao diện (gọi lại hàm thêm mới để reset toàn bộ textbox và datagridview)
+                btnThem_Click(sender, e);
+            }
+        }
+
+        private void btnIn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
